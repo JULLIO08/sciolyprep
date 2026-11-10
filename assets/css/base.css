@@ -1,0 +1,135 @@
+/*
+  SciOly Prep — base styles built on tokens.css
+  Element defaults + the few shared components (button, container, photo).
+*/
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--weight-body);
+  line-height: var(--leading-body);
+  text-rendering: optimizeLegibility;
+}
+
+img, svg { display: block; max-width: 100%; height: auto; }
+
+/* ---------- headings: Fraunces, sentence case, regular ---------- */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-heading);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.01em;
+  margin: 0 0 var(--space-4);
+  font-variation-settings: "opsz" 72;
+}
+h1 { font-size: var(--text-3xl); }
+h2 { font-size: var(--text-2xl); color: var(--color-sage); }  /* section headings carry the green */
+h3 { font-size: var(--text-xl); font-variation-settings: "opsz" 36; }
+
+p { margin: 0 0 var(--space-4); max-width: var(--measure); }
+.lede { font-size: var(--text-lg); color: var(--color-ink); }
+.muted { color: var(--color-muted); }
+
+/* ---------- links: sage, underline, color shift on hover ---------- */
+a {
+  color: var(--color-sage);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+a:hover { color: var(--color-sage-dark); }
+
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---------- UI text: small sans for nav, buttons, labels ---------- */
+.ui, nav, .button, .label, label {
+  font-family: var(--font-ui);
+}
+.label {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-ui);
+  letter-spacing: 0.04em;
+  color: var(--color-kraft-text);
+}
+
+/* ---------- button: rounded outline that fills in on hover ---------- */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 2.75rem;               /* 44px touch target */
+  padding: 0.6rem 1.25rem;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-ui);
+  line-height: 1.2;
+  color: var(--color-sage);
+  background: transparent;
+  border: var(--border-width) solid var(--color-sage);
+  border-radius: var(--radius-button);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out);
+}
+.button:hover,
+.button:focus-visible {
+  background: var(--color-sage);
+  color: var(--color-cream);
+}
+.button:active { background: var(--color-sage-dark); border-color: var(--color-sage-dark); }
+
+/* ---------- layout ---------- */
+.container {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.section { padding-block: var(--space-section); }  /* whitespace only, no rules or bands */
+
+/* ---------- photos: natural color, slightly rounded, no captions (alt text required) ---------- */
+.photo img {
+  width: 100%;
+  border-radius: var(--radius-photo);
+  object-fit: cover;
+}
+figure { margin: 0; }
+
+/* ---------- icons: minimal line ---------- */
+.icon {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  stroke: currentColor;
+  stroke-width: var(--icon-stroke);
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+/* ---------- motion: one soft hero entrance on load, nothing on scroll ---------- */
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+.enter {
+  animation: rise-in var(--duration-entrance) var(--ease-out) both;
+}
+.enter-delay { animation-delay: 120ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

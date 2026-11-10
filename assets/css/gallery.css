@@ -1,0 +1,178 @@
+/*
+  SciOly Prep — gallery carousel (gallery page only).
+  The one place the brand allows auto-motion, photo hover and overlays:
+  the main photo sits centered, the previous and next photos wait behind it
+  on either side under a dark overlay, and everything steps along on a timer.
+  The whole page sits under a light 15% overcast; side photos sit under a
+  75% one; only the main photo is fully bright.
+  Hovering the main photo grows it.
+*/
+
+.carousel { position: relative; }
+
+/* clip side photos at the page edge, but let the hover zoom spill up and down */
+.carousel { overflow-x: clip; overflow-y: visible; }
+
+/* stage height = the center photo's height (46% wide at 4:3) */
+.carousel-stage {
+  position: relative;
+  aspect-ratio: 200 / 69;
+  margin-block: var(--space-6);          /* room for the zoomed photo */
+}
+
+.carousel-track { margin: 0; padding: 0; list-style: none; }
+
+.carousel-item {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 46%;
+  overflow: hidden;                      /* keeps the hover zoom inside the frame */
+  border-radius: var(--radius-photo);
+  transform: translateX(-50%) scale(0.6);
+  opacity: 0;
+  z-index: 0;
+  transition:
+    transform 750ms var(--ease-out),
+    opacity 750ms var(--ease-out);
+}
+
+/* dark overcast over side photos */
+.carousel-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgb(8 10 8 / 0.75);       /* side photos: 75% overcast */
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 750ms var(--ease-out);
+}
+
+.carousel-item[data-pos="center"] {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+  z-index: 3;
+}
+/* hover: grow the center photo */
+.carousel-item[data-pos="center"]:hover {
+  transform: translateX(-50%) scale(1.2);
+  transition-duration: 400ms;
+  box-shadow: 0 1.5rem 3rem rgb(0 0 0 / 0.5);
+}
+.carousel-item[data-pos="center"]::after { opacity: 0; }
+
+.carousel-item[data-pos="prev"],
+.carousel-item[data-pos="next"] {
+  opacity: 1;
+  z-index: 2;
+  cursor: pointer;
+}
+.carousel-item[data-pos="prev"] { transform: translateX(-128%) scale(0.8); }
+.carousel-item[data-pos="next"] { transform: translateX(28%) scale(0.8); }
+
+/* waiting off-stage, hidden behind the side photos */
+.carousel-item[data-pos="before"] { transform: translateX(-160%) scale(0.6); }
+.carousel-item[data-pos="after"]  { transform: translateX(60%) scale(0.6); }
+
+/* real photos: <img class="carousel-media" ...>; placeholders use .ph-photo */
+img.carousel-media { display: block; }
+.carousel-media {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-photo);
+}
+
+
+/* arrows on either side */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  margin-top: -1.5rem;
+  padding: 0;
+  color: var(--color-sage);
+  background: var(--color-cream);
+  border: var(--border-width) solid var(--color-sage);
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out);
+}
+.carousel-arrow:hover,
+.carousel-arrow:focus-visible { background: var(--color-sage); color: var(--color-cream); }
+.carousel-arrow.prev { left: 0; }
+.carousel-arrow.next { right: 0; }
+.carousel-arrow .icon { width: 1.4rem; height: 1.4rem; }
+
+@media (max-width: 640px) {
+  .carousel-stage { aspect-ratio: 400 / 189; }  /* 63% wide photo at 4:3 */
+  .carousel-item { width: 63%; }
+  .carousel-item[data-pos="center"]:hover { transform: translateX(-50%) scale(1.1); }
+  .carousel-item[data-pos="prev"] { transform: translateX(-120%) scale(0.8); }
+  .carousel-item[data-pos="next"] { transform: translateX(20%) scale(0.8); }
+  .carousel-arrow { width: 2.5rem; height: 2.5rem; margin-top: -1.25rem; }
+}
+
+/* page layout: short heading so the carousel is visible without scrolling */
+.hero-compact { padding-block: var(--space-5) 0; }
+.hero-compact h1 { font-size: var(--text-2xl); margin-bottom: var(--space-2); }
+.hero-compact .lede { font-size: var(--text-base); margin-bottom: 0; }
+.gallery-section { padding-block: var(--space-2) var(--space-5); }
+
+/* ---------- overcast page (gallery only) ----------
+   The page is cream under a 15% dark tint. Text stays dark; regular sage is
+   too light to read here (3.7:1), so sage-dark (5.0:1) takes its place. */
+.page-overcast {
+  --overcast: #d4d1c8;                   /* cream + 15% rgb(8 10 8) */
+  background: var(--overcast);
+  transition: background-color 400ms var(--ease-out);
+}
+/* hovering the main photo deepens the overcast to 75% */
+.page-overcast:has(.carousel-item[data-pos="center"]:hover) {
+  --overcast: #444541;                   /* cream + 75% rgb(8 10 8) */
+}
+
+/* text above the carousel fades with the background, same speed */
+.page-overcast .site-header:not(.is-scrolled) a,
+.page-overcast .site-header:not(.is-scrolled) .logo-slot,
+.page-overcast .hero h1,
+.page-overcast .hero .lede {
+  transition:
+    color 400ms var(--ease-out),
+    border-color 400ms var(--ease-out),
+    background-color 400ms var(--ease-out);
+}
+/* at 75% dark, dark text disappears, so it turns cream while the photo is hovered */
+.page-overcast:has(.carousel-item[data-pos="center"]:hover) .site-header:not(.is-scrolled) .brand-link,
+.page-overcast:has(.carousel-item[data-pos="center"]:hover) .site-header:not(.is-scrolled) .site-nav ul a,
+.page-overcast:has(.carousel-item[data-pos="center"]:hover) .hero h1 { color: var(--color-cream); }
+.page-overcast:has(.carousel-item[data-pos="center"]:hover) .hero .lede { color: #d9d6cc; }
+.page-overcast:has(.carousel-item[data-pos="center"]:hover) .site-header:not(.is-scrolled) .site-nav ul a[aria-current="page"] { color: #a9c2a6; }
+.page-overcast:has(.carousel-item[data-pos="center"]:hover) .site-header:not(.is-scrolled) .button { color: #a9c2a6; border-color: #a9c2a6; }
+.page-overcast:has(.carousel-item[data-pos="center"]:hover) .site-header:not(.is-scrolled) .logo-slot { border-color: var(--color-cream); }
+.page-overcast a,
+.page-overcast .site-nav ul a:hover,
+.page-overcast .site-nav ul a[aria-current="page"] { color: var(--color-sage-dark); }
+.page-overcast .button { color: var(--color-sage-dark); border-color: var(--color-sage-dark); }
+.page-overcast .button:hover,
+.page-overcast .button:focus-visible { background: var(--color-sage-dark); color: var(--color-cream); }
+.page-overcast .site-footer { margin-top: 0; }
+.page-overcast .site-header .brand-link,
+.page-overcast .site-header .brand-link:hover { color: var(--color-ink); }
+.page-overcast .site-header.is-scrolled .brand-link { color: var(--color-cream); }
+
+/* sticky header: see-through at the top (the page background shows through, so the two
+   can never change at different speeds), solid sage once scrolled */
+.page-overcast .site-header { background: transparent; }
+.page-overcast .site-header.is-scrolled { background: var(--color-sage); }
+.page-overcast .site-header.is-scrolled .site-nav ul a,
+.page-overcast .site-header.is-scrolled .site-nav ul a:hover,
+.page-overcast .site-header.is-scrolled .site-nav ul a[aria-current="page"] { color: var(--color-cream); }
+.page-overcast .site-header.is-scrolled .button { color: var(--color-cream); border-color: var(--color-cream); }
+.page-overcast .site-header.is-scrolled .button:hover { background: var(--color-cream); color: var(--color-sage); }

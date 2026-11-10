@@ -1,0 +1,77 @@
+/*
+  SciOly Prep — design tokens
+  Single source of truth for color, type, spacing, shape and motion.
+  Plain CSS custom properties so it drops into Astro unchanged
+  (move to src/styles/tokens.css and import from the base layout).
+*/
+
+:root {
+  /* ---------- color: sage + kraft on cream (light only) ---------- */
+  --color-cream: #f8f4ea;        /* page background */
+  --color-cream-deep: #efe8d8;   /* subtle fills (inputs, placeholders) */
+  --color-white: #fffdf8;        /* raised surfaces, rarely used */
+
+  --color-sage: #4f6f52;         /* primary: buttons, links, headings accents. 5.1:1 on cream */
+  --color-sage-dark: #3e5941;    /* hover / pressed */
+
+  --color-kraft: #a47148;        /* secondary: large text, rules, decorative only. 3.8:1 on cream */
+  --color-kraft-text: #7a5232;   /* kraft when used for small text. 6.2:1 on cream */
+
+  --color-ink: #222621;          /* body text. 13.8:1 on cream */
+  --color-muted: #5c5f57;        /* meta text, small notes. 5.9:1 on cream */
+  --color-line: #ddd5c4;         /* hairlines, input borders */
+
+  --color-focus: var(--color-sage);
+
+  /* ---------- type ---------- */
+  --font-heading: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body: "Literata", Georgia, "Times New Roman", serif;
+  --font-ui: "Source Sans 3", "Segoe UI", system-ui, sans-serif; /* nav, buttons, labels only */
+
+  --weight-heading: 400;         /* sentence case, regular */
+  --weight-body: 400;
+  --weight-ui: 600;
+
+  /* fluid scale, 1.25 ratio at desktop */
+  --text-xs: 0.8125rem;                             /* 13px  labels */
+  --text-sm: 0.9375rem;                             /* 15px  small text, UI */
+  --text-base: 1.0625rem;                           /* 17px  body */
+  --text-lg: clamp(1.15rem, 1.05rem + 0.4vw, 1.3rem);   /* lede */
+  --text-xl: clamp(1.4rem, 1.2rem + 0.9vw, 1.75rem);    /* h3 */
+  --text-2xl: clamp(1.8rem, 1.45rem + 1.6vw, 2.5rem);   /* h2 */
+  --text-3xl: clamp(2.4rem, 1.8rem + 2.8vw, 3.75rem);   /* h1 */
+
+  --leading-tight: 1.12;
+  --leading-body: 1.65;
+  --measure: 38rem;              /* max line length for paragraphs */
+
+  /* ---------- spacing (balanced) ---------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --space-section: clamp(3.5rem, 2.5rem + 5vw, 6rem); /* whitespace is the only section divider */
+
+  --container: 70rem;
+  --gutter: clamp(1rem, 0.5rem + 3vw, 2.5rem);
+
+  /* ---------- shape ---------- */
+  --radius-photo: 6px;           /* slightly rounded photos */
+  --radius-button: 10px;         /* rounded outline buttons */
+  --radius-input: 8px;
+  --border-width: 1.5px;
+
+  /* ---------- icons ---------- */
+  --icon-size: 1.25rem;
+  --icon-stroke: 1.5;            /* minimal line icons */
+
+  /* ---------- motion (subtle) ---------- */
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --duration-fast: 160ms;        /* hovers, focus */
+  --duration-base: 220ms;        /* button fill */
+  --duration-entrance: 600ms;    /* hero entrance on page load, once */
+}

@@ -1,0 +1,34 @@
+/*
+  TEMPORARY — placeholder styles for text and photos that haven't been written/sent yet.
+  Delete this file and its <link> tags once every placeholder is replaced.
+  Find leftovers with a search for: class="ph
+*/
+
+/* text placeholder: real text color, marked only by brackets, e.g. [About headline] */
+.ph { color: inherit; }
+.ph::before { content: "["; }
+.ph::after { content: "]"; }
+.ph-block { display: block; }
+.hero .ph-block { margin-inline: auto; }
+
+/* photo placeholder: note says what shot belongs here */
+.ph-photo {
+  display: grid;
+  place-items: center;
+  padding: var(--space-5);
+  background: var(--color-cream-deep);
+  border: var(--border-width) dashed var(--color-kraft);
+  border-radius: var(--radius-photo);
+  color: var(--color-kraft-text);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-ui);
+  text-align: center;
+}
+.ph-photo.wide { aspect-ratio: 16 / 7; }
+.ph-photo.landscape { aspect-ratio: 4 / 3; }
+.ph-photo.portrait { aspect-ratio: 4 / 5; }
+
+@media (max-width: 520px) {
+  .ph-photo.wide { aspect-ratio: 4 / 3; }
+}
