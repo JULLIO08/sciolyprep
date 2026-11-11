@@ -80,7 +80,7 @@ Subtle.
 - Link color: 160ms.
 - Hero content rises in once on page load (600ms, 8px). Nothing else animates.
 - No scroll animations, no photo hovers, no counters.
-- **One exception, the Gallery page:** the page sits under a light overcast (`#D4D1C8`, cream with a 15% dark tint; dark text, sage-dark `#3E5941` for links and buttons). A centered carousel advances on its own (0.75s slide, ~2.6s rest). The previous and next photos sit behind the main photo under a 75% dark overlay; only the main photo is fully bright. Hovering the main photo pauses the carousel, grows the photo 20%, and deepens the page overcast to 75% (`#444541`); header and headline text fade to cream with it. Arrow buttons on both sides, side-photo clicks and arrow keys move it by hand; it also pauses on keyboard focus and when the tab is hidden.
+- **One exception, the Gallery page:** the page sits under a light overcast (`#D4D1C8`, cream with a 15% dark tint; dark text, sage-dark `#3E5941` for links and buttons). A centered carousel advances on its own (0.75s slide, ~2.6s rest). The previous and next photos sit behind the main photo under a 30% dark overlay that deepens to 75% while the main photo is hovered; only the main photo is fully bright. Hovering the main photo pauses the carousel, grows the photo 20%, and deepens the page overcast to 75% (`#444541`); header and headline text fade to cream with it. Arrow buttons on both sides, side-photo clicks and arrow keys move it by hand; it also pauses on keyboard focus and when the tab is hidden.
 - `prefers-reduced-motion` turns all of it off.
 
 ## Voice

@@ -4,7 +4,7 @@
   the main photo sits centered, the previous and next photos wait behind it
   on either side under a dark overlay, and everything steps along on a timer.
   The whole page sits under a light 15% overcast; side photos sit under a
-  75% one; only the main photo is fully bright.
+  30% one (both deepen to 75% while the main photo is hovered).
   Hovering the main photo grows it.
 */
 
@@ -42,10 +42,15 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgb(8 10 8 / 0.75);       /* side photos: 75% overcast */
+  background: rgb(8 10 8 / 0.3);        /* side photos: 30% overcast, 75% while the main photo is hovered */
   opacity: 1;
   pointer-events: none;
-  transition: opacity 750ms var(--ease-out);
+  transition:
+    opacity 750ms var(--ease-out),
+    background-color 400ms var(--ease-out);   /* same speed as the page overcast */
+}
+.carousel:has(.carousel-item[data-pos="center"]:hover) .carousel-item::after {
+  background: rgb(8 10 8 / 0.75);
 }
 
 .carousel-item[data-pos="center"] {
