@@ -1,5 +1,5 @@
 /*
-  SciOlyPREP — shared behavior for every page.
+  SciOly Prep — shared behavior for every page.
   Sticky header: adds .is-scrolled once the page has moved down a little,
   which turns the header sage (see layout.css).
 */
