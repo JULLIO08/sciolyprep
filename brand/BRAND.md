@@ -1,4 +1,4 @@
-# SciOly Prep brand kit
+# SciOlyPREP brand kit
 
 Version 1 · November 2026. Tokens live in `assets/css/tokens.css`; base styles in `assets/css/base.css`. Preview everything at `/brand/`.
 
@@ -12,7 +12,7 @@ Clean and academic, with a small amount of real-club character. That character c
 
 ## Name and tagline
 
-- Name: **SciOly Prep** (capital S, capital O, capital P). Never "Scioly Prep", "SCIOLY PREP", or "SciOlyPREP".
+- Name: **SciOlyPREP** (capital S, capital O, capital P). Never "Scioly Prep" or "SCIOLY PREP".
 - Tagline: **Science Olympiad tutoring**
 - Logo: to be supplied. Until then, set the name in Fraunces as a plain wordmark. Leave space for a mark to the left.
 

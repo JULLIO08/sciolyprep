@@ -1,5 +1,5 @@
 /*
-  SciOly Prep — centered carousel for the gallery page.
+  SciOlyPREP — centered carousel for the gallery page.
 
   One photo sits in the center; the previous and next photos wait behind it
   on either side. Every few seconds the next photo slides to the center,

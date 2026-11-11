@@ -1,5 +1,5 @@
 /*
-  SciOly Prep — design tokens
+  SciOlyPREP — design tokens
   Single source of truth for color, type, spacing, shape and motion.
   Plain CSS custom properties so it drops into Astro unchanged
   (move to src/styles/tokens.css and import from the base layout).
