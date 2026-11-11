@@ -210,7 +210,7 @@
 .site-footer nav a { color: var(--color-cream); text-decoration: none; font-size: var(--text-sm); font-weight: var(--weight-ui); display: inline-block; padding-block: var(--space-2); }
 .site-footer nav a:hover { color: var(--color-cream); text-decoration: underline; text-underline-offset: 0.3em; }
 .site-footer :focus-visible { outline-color: var(--color-cream); }
-.site-footer .copy { flex-basis: 100%; margin: var(--space-5) 0 0; font-size: var(--text-sm); color: var(--color-cream); font-family: var(--font-ui); }
+.site-footer .copy { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2) var(--space-5); max-width: none; flex-basis: 100%; margin: var(--space-5) 0 0; font-size: var(--text-sm); color: var(--color-cream); font-family: var(--font-ui); }
 
 /* ---------- responsive ---------- */
 @media (max-width: 860px) {
@@ -265,4 +265,56 @@
   .site-header.is-scrolled .site-nav .button { display: none; }
   .site-header.is-scrolled .container { padding-block: var(--space-2); gap: var(--space-1); }
   [id] { scroll-margin-top: 7.5rem; }
+}
+
+/* ---------- real photos: same shapes as the placeholders they replace ---------- */
+.media {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: var(--radius-photo);
+}
+.media.wide { aspect-ratio: 16 / 7; }
+.media.landscape { aspect-ratio: 4 / 3; }
+.media.portrait { aspect-ratio: 4 / 5; }
+@media (max-width: 520px) {
+  .media.wide { aspect-ratio: 4 / 3; }
+}
+
+/* ---------- team: five leaders in one row, tutor names under the team photo ---------- */
+/* leadership: three across, then two (left-aligned) */
+/* six columns, each card spans two: three on the first row, the last two centered below */
+.people.five { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--space-7) var(--space-6); }
+.people.five > li { grid-column: span 2; }
+.people.five > li:nth-child(4) { grid-column: 2 / span 2; }
+.people.five > li:nth-child(5) { grid-column: 4 / span 2; }
+.people.five .person h3 { font-size: var(--text-xl); margin-top: var(--space-4); }
+.people.five .person p { font-size: var(--text-base); }
+.people.five .person .label { font-size: var(--text-sm); }
+.names {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-3) var(--space-6);
+  margin: var(--space-6) 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+}
+@media (max-width: 960px) {
+  .names { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .people.five { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6) var(--space-4); }
+  .people.five > li, .people.five > li:nth-child(4), .people.five > li:nth-child(5) { grid-column: auto; }
+  .names { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* footer credit: quieter than the copyright line (regular weight, softer color, a size smaller) */
+.site-footer .copy span:last-child {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-xs);
+  color: #e3e7dc;                        /* 4.5:1 on the sage band */
 }

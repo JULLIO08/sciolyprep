@@ -58,7 +58,7 @@ Google Fonts URL:
 
 ## Icons
 
-Minimal line icons only: 20px, 1.5 stroke, round caps, `currentColor`. Use for functional spots (email, phone, calendar, location). Never decorative, never emoji.
+Minimal line icons only: 20px, 1.5 stroke, round caps, `currentColor`. Use for functional spots (email, calendar, location). Never decorative, never emoji.
 
 ## Layout
 
