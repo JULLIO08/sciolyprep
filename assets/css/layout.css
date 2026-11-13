@@ -154,7 +154,7 @@
 .timeline { list-style: none; margin: 0; padding: 0; max-width: 46rem; }
 .timeline li {
   display: grid;
-  grid-template-columns: 7rem 1fr;
+  grid-template-columns: max-content 1fr;
   gap: var(--space-5);
   padding-block: var(--space-4);
 }

@@ -15,16 +15,13 @@
   // site root = two folders up from /assets/js/site.js
   const script = document.currentScript;
   const root = new URL('../../', script ? script.src : window.location.href);
-  const fromDisk = root.protocol === 'file:';
 
-  // "" = home page; folders on disk have no index fallback, so name the file
   function url(path) {
-    if (path === '' || path.startsWith('#')) return new URL((fromDisk ? 'index.html' : '') + path, root).href;
     return new URL(path, root).href;
   }
 
   const nav = [
-    ['', 'Home'],
+    ['home.html', 'Home'],
     ['about/about.html', 'About Us'],
     ['team/team.html', 'Team'],
     ['gallery/gallery.html', 'Gallery'],
@@ -35,7 +32,7 @@
   const heading = `
 <header class="site-header">
   <div class="container">
-    <a class="brand-link" href="${url('')}" aria-label="SciOly Prep home">
+    <a class="brand-link" href="${url('home.html')}" aria-label="SciOly Prep home">
       <img class="site-logo" src="${url('images/logo/scioly-prep-logo.png?v=2')}" width="352" height="318" alt="" aria-hidden="true">
       <span class="wordmark">SciOly Prep</span>
     </a>
@@ -50,7 +47,7 @@
 <footer class="site-footer">
   <div class="container">
     <div>
-      <a class="brand-link" href="${url('')}"><span class="wordmark">SciOly Prep</span></a>
+      <a class="brand-link" href="${url('home.html')}"><span class="wordmark">SciOly Prep</span></a>
       <p class="tagline">Science Olympiad tutoring</p>
     </div>
     <nav aria-label="Footer">
