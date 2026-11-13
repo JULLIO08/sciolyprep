@@ -36,7 +36,7 @@
 <header class="site-header">
   <div class="container">
     <a class="brand-link" href="${url('')}" aria-label="SciOly Prep home">
-      <img class="site-logo" src="${url('images/logo/scioly-prep-logo.png')}" width="352" height="318" alt="" aria-hidden="true">
+      <img class="site-logo" src="${url('images/logo/scioly-prep-logo.png?v=2')}" width="352" height="318" alt="" aria-hidden="true">
       <span class="wordmark">SciOly Prep</span>
     </a>
     <nav class="site-nav" aria-label="Main">
