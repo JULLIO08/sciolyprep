@@ -41,7 +41,14 @@
   line-height: 1;
   font-variation-settings: "opsz" 36;
 }
-/* empty logo slot until the real logo arrives */
+/* header logo: the SciOly Prep seal */
+.site-logo {
+  display: block;
+  width: auto;
+  height: 3rem;
+  flex: none;
+}
+/* empty logo slot (still used on the brand guide page) */
 .logo-slot {
   width: 2.25rem;
   height: 2.25rem;
@@ -77,6 +84,13 @@
 .hero h1 { max-width: 20ch; }
 .hero .actions { justify-content: center; }
 .hero-photo { margin-top: var(--space-6); }
+/* SciOly Prep Program seal above the home headline */
+.hero-seal {
+  display: block;
+  width: min(15rem, 60vw);
+  height: auto;
+  margin: 0 auto var(--space-5, 2rem);
+}
 
 .actions {
   display: flex;
