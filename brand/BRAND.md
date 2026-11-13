@@ -1,6 +1,6 @@
 # SciOly Prep brand kit
 
-Version 1 · November 2026. Tokens live in `assets/css/tokens.css`; base styles in `assets/css/base.css`. Preview everything at `/brand/`.
+Version 1 · November 2026. Tokens live in `assets/css/tokens.css`; base styles in `assets/css/base.css`. Preview everything at `/brand/brand.html`.
 
 ## Who we're talking to
 

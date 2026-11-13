@@ -292,23 +292,33 @@
 .people.five .person h3 { font-size: var(--text-xl); margin-top: var(--space-4); }
 .people.five .person p { font-size: var(--text-base); }
 .people.five .person .label { font-size: var(--text-sm); }
-.names {
+/* tutors: small rectangular headshots in a dense grid, name under each */
+.tutors {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--space-3) var(--space-6);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--space-5) var(--space-4);
   margin: var(--space-6) 0 0;
   padding: 0;
   list-style: none;
-  font-family: var(--font-heading);
-  font-size: var(--text-lg);
+  text-align: center;
+}
+.tutors .tutor { font-family: var(--font-heading); font-size: var(--text-sm); line-height: 1.3; }
+.tutors .tutor-face {
+  width: 5.5rem;
+  aspect-ratio: 4 / 5;
+  height: auto;
+  margin: 0 auto var(--space-2);
+  padding: 0;
+  border-radius: var(--radius-photo);
+  object-fit: cover;
 }
 @media (max-width: 960px) {
-  .names { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .tutors { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 @media (max-width: 560px) {
   .people.five { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6) var(--space-4); }
   .people.five > li, .people.five > li:nth-child(4), .people.five > li:nth-child(5) { grid-column: auto; }
-  .names { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tutors { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 /* footer credit: quieter than the copyright line (regular weight, softer color, a size smaller) */
