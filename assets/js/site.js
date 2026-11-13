@@ -21,24 +21,24 @@
   }
 
   const nav = [
-    ['home.html', 'Home'],
-    ['about/about.html', 'About Us'],
-    ['team/team.html', 'Team'],
-    ['gallery/gallery.html', 'Gallery'],
-    ['contact/contact.html', 'Contact']
+    ['', 'Home'],
+    ['about/', 'About Us'],
+    ['team/', 'Team'],
+    ['gallery/', 'Gallery'],
+    ['contact/', 'Contact']
   ];
   const navItems = nav.map(([path, label]) => `<li><a href="${url(path)}">${label}</a></li>`).join('');
 
   const heading = `
 <header class="site-header">
   <div class="container">
-    <a class="brand-link" href="${url('home.html')}" aria-label="SciOly Prep home">
+    <a class="brand-link" href="${url('')}" aria-label="SciOly Prep home">
       <img class="site-logo" src="${url('images/logo/scioly-prep-logo.png?v=2')}" width="352" height="318" alt="" aria-hidden="true">
       <span class="wordmark">SciOly Prep</span>
     </a>
     <nav class="site-nav" aria-label="Main">
       <ul>${navItems}</ul>
-      <a class="button" href="${url('contact/contact.html#join')}">Join as a tutor</a>
+      <a class="button" href="${url('contact/#join')}">Join as a tutor</a>
     </nav>
   </div>
 </header>`;
@@ -47,11 +47,11 @@
 <footer class="site-footer">
   <div class="container">
     <div>
-      <a class="brand-link" href="${url('home.html')}"><span class="wordmark">SciOly Prep</span></a>
+      <a class="brand-link" href="${url('')}"><span class="wordmark">SciOly Prep</span></a>
       <p class="tagline">Science Olympiad tutoring</p>
     </div>
     <nav aria-label="Footer">
-      <ul>${navItems}<li><a href="${url('contact/contact.html#join')}">Join as a tutor</a></li></ul>
+      <ul>${navItems}<li><a href="${url('contact/#join')}">Join as a tutor</a></li></ul>
     </nav>
     <p class="copy"><span>&copy; 2026 SciOly Prep</span><span>Website designed and built by Jacob Anil but mostly by William Huang</span></p>
   </div>
