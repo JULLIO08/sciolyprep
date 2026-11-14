@@ -53,7 +53,7 @@
     <nav aria-label="Footer">
       <ul>${navItems}<li><a href="${url('contact/#join')}">Join as a tutor</a></li></ul>
     </nav>
-    <p class="copy"><span>&copy; 2026 SciOly Prep</span><span>Website designed and built by Jacob Anil</span></p>
+    <p class="copy"><span>&copy; 2026 SciOly Prep</span><span>Website and logo designed by Jacob Anil</span></p>
   </div>
 </footer>`;
 
