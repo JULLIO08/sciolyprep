@@ -349,3 +349,7 @@
 .join-copy h3 { font-size: var(--text-lg); margin-bottom: var(--space-2); }
 .join-copy .checklist { margin-bottom: var(--space-4); }
 .join-copy .checklist li { margin-bottom: var(--space-1); }
+/* center the photo and the text block against each other */
+#join .cols-2 { align-items: center; }
+.join-copy > :first-child { margin-top: 0; }
+.join-copy > :last-child { margin-bottom: 0; }
