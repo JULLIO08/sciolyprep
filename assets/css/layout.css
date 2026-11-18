@@ -342,3 +342,10 @@
   font-size: var(--text-xs);
   color: #e3e7dc;                        /* 4.5:1 on the sage band */
 }
+
+/* join-as-a-tutor details: smaller text so the lists fit beside the photo */
+.join-copy p,
+.join-copy .checklist li { font-size: var(--text-sm); }
+.join-copy h3 { font-size: var(--text-lg); margin-bottom: var(--space-2); }
+.join-copy .checklist { margin-bottom: var(--space-4); }
+.join-copy .checklist li { margin-bottom: var(--space-1); }
