@@ -32,6 +32,16 @@
     slide.setAttribute('role', 'group');
     slide.setAttribute('aria-roledescription', 'slide');
     slide.setAttribute('aria-label', `${i + 1} of ${slides.length}`);
+    // hover caption: reuse the photo's alt text (hidden from screen readers,
+    // which already read the alt)
+    const img = slide.querySelector('img');
+    if (img && img.alt) {
+      const caption = document.createElement('p');
+      caption.className = 'carousel-caption';
+      caption.setAttribute('aria-hidden', 'true');
+      caption.textContent = img.alt;
+      slide.appendChild(caption);
+    }
     slide.addEventListener('click', () => {
       if (slide.dataset.pos === 'prev') go(-1);
       if (slide.dataset.pos === 'next') go(1);
